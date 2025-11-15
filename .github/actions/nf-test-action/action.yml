@@ -79,7 +79,12 @@ runs:
         SENTIEON_AUTH_MECH: "GitHub Actions - token"
       run: |
         sudo mkdir -m 777 -p /mnt/runner
-        export NFT_WORKDIR=/mnt/runner/nf-test NXF_WORK=/mnt/runner/work
+        sudo sed -i 's#^{#{"data-root":"/mnt/docker",#' /etc/docker/daemon.json 
+        sudo systemctl restart docker
+
+        export NFT_WORKDIR=/mnt/runner/nf-test
+        export NXF_WORK=/mnt/runner/work 
+        export NXF_SINGULARITY_CACHEDIR=/mnt/runner/singularity-cachedir
 
         nf-test test \
           --profile=${{ inputs.profile }} \
