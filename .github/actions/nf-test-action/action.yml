@@ -79,7 +79,7 @@ runs:
         SENTIEON_AUTH_MECH: "GitHub Actions - token"
       run: |
         sudo mkdir -m 777 -p /mnt/runner
-        NFT_WORKDIR=/mnt/runner
+        export NFT_WORKDIR=/mnt/runner
 
         nf-test test \
           --profile=${{ inputs.profile }} \

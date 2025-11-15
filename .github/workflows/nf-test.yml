@@ -93,10 +93,8 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        #shard: ${{ fromJson(needs.nf-test-changes.outputs.shard) }}
-        #profile: [conda, docker, singularity]
-        shard: [0]
-        profile: [conda]
+        shard: ${{ fromJson(needs.nf-test-changes.outputs.shard) }}
+        profile: [conda, docker, singularity]
         arch:
           - x64
           # FIXME
