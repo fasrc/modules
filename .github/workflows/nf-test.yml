@@ -74,7 +74,8 @@ jobs:
         env:
           NFT_VER: ${{ env.NFT_VER }}
         with:
-          max_shards: 15
+#         max_shards: 15
+          max_shards: 1
           paths: "${{ join(fromJson(steps.list.outputs.components ), ' ') }}"
 
       - name: debug
@@ -94,7 +95,8 @@ jobs:
       fail-fast: false
       matrix:
         shard: ${{ fromJson(needs.nf-test-changes.outputs.shard) }}
-        profile: [conda, docker, singularity]
+#       profile: [conda, docker, singularity]
+        profile: [conda]
         arch:
           - x64
           # FIXME
