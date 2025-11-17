@@ -89,8 +89,7 @@ runs:
         export NXF_SINGULARITY_CACHEDIR=/mnt/runner/singularity-cachedir
         export CONDA_ENVS_DIRS=/mnt/runner/conda/envs
 
-        conda config --remove-key pkgs_dirs                                                                            
-        conda config --add pkgs_dirs /mnt/runner/conda/pkgs_dirs
+        conda config --prepend pkgs_dirs /mnt/runner/conda/pkgs_dirs
 
         nf-test test \
           --profile=${{ inputs.profile }} \
